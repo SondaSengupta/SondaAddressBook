@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-US" ng-app="todoList">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class ="container" ng-controller ="ToDoController as doCont">
+    <h1>My Running to do List </h1>
+    <form>
+      <label>Title </label><input ="text" ng-model="doCont.newtodo.title">
+      <label>Deadline </label><input ="text" ng-model="doCont.newtodo.deadline">
+      <label>Priority </label><input = "text" ng-model="doCont.newtodo.priority">
+      <label>Description </label><input ="text" ng-model="doCont.newtodo.desc">
+      <button ng-click ="doCont.addtoList()">Add to List!</button>
+    </form>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+        <th>Task Title </th>
+        <th> The Deadline </th>
+        <th> Priority </th>
+        <th> Task Description </th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="list in doCont.todo">
+          <td>{{list.title}}</td>
+          <td>{{list.deadline}}</td>
+          <td>{{list.priority}}</td>
+          <td>{{list.desc}}</td>
+          <td><button ng-click='todoCtrl.removeTodo(task)'>Remove</button></td>
+        </tr>
+      <tbody>
+    </table>
+  </div>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
