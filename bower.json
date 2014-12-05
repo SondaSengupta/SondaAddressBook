@@ -1,0 +1,20 @@
+{
+  "name": "ToDoList",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SondaSengupta/ToDoList",
+  "authors": [
+    "SondaSengupta <sondasengupta@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.3.5"
+  }
+}
