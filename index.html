@@ -15,12 +15,10 @@
       <label>Description </label><input ="text" ng-model="doCont.newtodo.desc">
       <button ng-click ="doCont.addtoList()">Add to List!</button>
     </form>
-  </div>
-  <div>
     <table>
       <thead>
         <tr>
-        <th>Task Title </th>
+        <th> Task Title </th>
         <th> The Deadline </th>
         <th> Priority </th>
         <th> Task Description </th>
@@ -32,7 +30,7 @@
           <td>{{list.deadline}}</td>
           <td>{{list.priority}}</td>
           <td>{{list.desc}}</td>
-          <td><button ng-click='todoCtrl.removeTodo(task)'>Remove</button></td>
+          <td><button ng-click="doCont.removeTodo(todo)">Remove</button></td>
         </tr>
       <tbody>
     </table>
