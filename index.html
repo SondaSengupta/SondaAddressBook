@@ -8,12 +8,11 @@
 <body>
   <div class ="container" ng-controller ="ToDoController as doCont">
     <h1>Address Book</h1>
-    <div ng-include="'view/form.html'"></div>
-    <div ng-include="'view/table.html'"></div>
-
+    <div ng-view></div>
   </div>
   <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

@@ -1,6 +1,18 @@
 ;(function(){
   'use strict';
-  angular.module('AddressBook',[])
+  angular.module('AddressBook', ['ngRoute'])
+ .config(function($routeProvider){
+      $routeProvider
+      .when('/', {
+        templateUrl: 'view/table.html'
+      })
+      .when('/new', {
+        templateUrl: 'view/form.html'
+      })
+      .otherwise({redirectTo: '/'});
+    })
+
+
     .controller('ToDoController',function($http){
       var vm = this;
       $http.get('https://sondatodolist.firebaseio.com/.json')
@@ -22,7 +34,7 @@
         });
       };
 
-      vm.removeTodo = function(contactID,list){
+      vm.removeTodo = function(contactID){
         var url = 'https://sondatodolist.firebaseio.com/'+ contactID + '.json';
         console.log(contactID)
         console.log(list)
