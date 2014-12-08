@@ -1,37 +1,36 @@
 ;(function(){
   'use strict';
   angular.module('todoList',[])
-    .controller('ToDoController',function(){
+    .controller('ToDoController',function($http){
       var vm = this;
-      vm.todo = [
-        {
-          title: 'Finish this App',
-          deadline: 'ASAP',
-          priority: 'high',
-          desc: 'app to learn angular'
-        },
-        {
-          title: 'Finish this Bapp',
-          deadline: 'ASAP',
-          priority: 'high',
-          desc: 'app to learn Bapp'
-        },
-        {
-          title: 'Finish this Lap',
-          deadline: 'ASAP',
-          priority: 'high',
-          desc: 'app to learn angular'
-        }
-      ];
+      $http.get('https://sondatodolist.firebaseio.com/')
+        .success(function(data){
+          vm.tasks = data;
+        })
+        .error(function(err){
+          console.log(err)
+        });
 
       vm.addtoList = function(){
-        vm.todo.push(vm.newtodo);
-        vm.newtodo = null;
-
+        $http.post('https://sondatodolist.firebaseio.com/', vm.newtodo)
+        .success(function(data){
+          vm.tasks[data.name] = vm.newtodo;
+        })
+        .error(function(err){
+          console.log(err)
+        });
       };
+
         vm.removeTodo = function(item){
-        var index = vm.todo.indexOf(item);
-        vm.todo.splice(index,1);
+          var url = 'https://sondatodolist.firebaseio.com/' + '.json';
+          $http.delete(url)
+          .success(function(){
+            delete vm.tasks[todo]
+          })
+          .error(function(err){
+            console.log(err)
+          });
+
       }
     });
 }());
