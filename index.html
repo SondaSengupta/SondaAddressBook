@@ -8,6 +8,14 @@
 <body>
   <div class ="container" ng-controller ="ToDoController as doCont">
     <h1>Address Book</h1>
+    <form action="/#/">
+      <input type="submit" value="All Contacts">
+    </form>
+    <br/>
+    <form action="/#/new">
+      <input type="submit" value="Make New Contact">
+    </form>
+    <br/>
     <div ng-view></div>
   </div>
   <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
