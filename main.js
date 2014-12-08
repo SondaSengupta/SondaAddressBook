@@ -1,36 +1,45 @@
 ;(function(){
   'use strict';
-  angular.module('todoList',[])
+  angular.module('AddressBook',[])
     .controller('ToDoController',function($http){
       var vm = this;
-      $http.get('https://sondatodolist.firebaseio.com/')
+      $http.get('https://sondatodolist.firebaseio.com/.json')
         .success(function(data){
-          vm.tasks = data;
+          vm.contact = data;
         })
         .error(function(err){
           console.log(err)
         });
 
       vm.addtoList = function(){
-        $http.post('https://sondatodolist.firebaseio.com/', vm.newtodo)
+        $http.post('https://sondatodolist.firebaseio.com/.json', vm.newcontact)
         .success(function(data){
-          vm.tasks[data.name] = vm.newtodo;
+          vm.contact[data.name] = vm.newcontact;
+          vm.newcontact = _defaultContact();
         })
         .error(function(err){
           console.log(err)
         });
       };
 
-        vm.removeTodo = function(item){
-          var url = 'https://sondatodolist.firebaseio.com/' + '.json';
-          $http.delete(url)
-          .success(function(){
-            delete vm.tasks[todo]
-          })
-          .error(function(err){
-            console.log(err)
-          });
+      vm.removeTodo = function(contactID,list){
+        var url = 'https://sondatodolist.firebaseio.com/'+ contactID + '.json';
+        console.log(contactID)
+        console.log(list)
+        $http.delete(url)
+        .success(function(){
+          delete vm.contact[contactID]
+        })
+        .error(function(err){
+          console.log(err)
+        });
+      };
 
+      function _defaultContact(){
+        return {
+          name: ''
+        }
       }
+
     });
 }());

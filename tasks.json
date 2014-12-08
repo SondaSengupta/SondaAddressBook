@@ -1,18 +1,18 @@
 [{
-  "title": "Finish this App",
-  "deadline": "ASAP",
-  "priority": "high",
-  "desc": "app to learn angular"
+  "person": "Lisa Simpson",
+  "address": "Springfield, IL",
+  "phone": "123-456-7890",
+  "email": "lsimpson@springfield.com"
 },
 {
-  "title": "Learn more about Modules",
-  "deadline": "ASAP",
-  "priority": "high",
-  "desc": "app to learn Bapp"
+  "person": "Comic Book Guy",
+  "address": "Comic Books",
+  "phone": "123-456-7890",
+  "email": "comicbookguy@springfield.com"
 },
 {
-  "title": "Finish this Lap",
-  "deadline": "ASAP",
-  "priority": "high",
-  "desc": "app to learn angular"
+  "person": "Mr. Burns",
+  "address": "Mansion",
+  "phone": "123-456-7890",
+  "email": "burns@mansion.com"
 }]
