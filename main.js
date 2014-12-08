@@ -4,10 +4,14 @@
  .config(function($routeProvider){
       $routeProvider
       .when('/', {
-        templateUrl: 'view/table.html'
+        templateUrl: 'view/table.html',
+        controller: 'ToDoController',
+        controllerAs: 'doCont'
       })
       .when('/new', {
-        templateUrl: 'view/form.html'
+        templateUrl: 'view/form.html',
+        controller: 'ToDoController',
+        controllerAs: 'doCont'
       })
       .otherwise({redirectTo: '/'});
     })
