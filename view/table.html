@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+    <th> Person </th>
+    <th> Address </th>
+    <th> Phone </th>
+    <th> Email </th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(contactID,list) in doCont.contact">
+      <td>{{list.person}}</td>
+      <td>{{list.address}}</td>
+      <td>{{list.phone}}</td>
+      <td>{{list.email}}</td>
+      <td><button ng-click="doCont.removeTodo(contactID,list)">Remove</button></td>
+    </tr>
+  <tbody>
+</table>
