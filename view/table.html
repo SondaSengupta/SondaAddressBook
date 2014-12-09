@@ -5,6 +5,7 @@
     <th> Address </th>
     <th> Phone </th>
     <th> Email </th>
+    <th> Birthday </th>
     <th></th>
   </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td>{{list.address}}</td>
       <td>{{list.phone}}</td>
       <td>{{list.email}}</td>
+      <td>{{list.birthday | date}}</td>
       <td>
         <a class="btn btn-primary" href="/#/{{contactID}}/edit">Edit</a>
         <a class="btn btn-secondary" href="/#/{{contactID}}">Show</a>

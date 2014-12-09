@@ -1,6 +1,6 @@
 ;(function(){
   'use strict';
-  angular.module('AddressBook', ['ngRoute'])
+  angular.module('AddressBook', ['ngRoute','mgcrea.ngStrap'])
  .config(function($routeProvider){
       $routeProvider
       .when('/', {
