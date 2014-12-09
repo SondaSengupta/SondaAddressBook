@@ -4,23 +4,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class ="container">
     <h1>Address Book</h1>
-    <form action="/#/">
-      <input type="submit" value="All Contacts">
-    </form>
-    <br/>
-    <form action="/#/new">
-      <input type="submit" value="Make New Contact">
-    </form>
-    <br/>
+    <a class="btn btn-primary" href="/#/">All Contacts</a>
+    <a class="btn btn-primary" href="/#/new">Make New Contacts</a>
     <div ng-view></div>
   </div>
-  <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

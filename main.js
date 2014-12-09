@@ -13,7 +13,24 @@
         controller: 'ToDoController',
         controllerAs: 'doCont'
       })
+      .when('/:id', {
+        templateUrl: 'view/show.html',
+        controller: 'ShowController',
+        controllerAs:'show'
+      })
       .otherwise({redirectTo: '/'});
+    })
+
+   .controller('ShowController', function($http, $routeParams){
+      var vm = this;
+      var id = $routeParams.id;
+      $http.get('https://sondatodolist.firebaseio.com/' + id + '.json')
+        .success(function(data){
+          vm.contact = data;
+        })
+        .error(function(err){
+          console.log(err);
+        });
     })
 
 
@@ -41,7 +58,6 @@
       vm.removeTodo = function(contactID){
         var url = 'https://sondatodolist.firebaseio.com/'+ contactID + '.json';
         console.log(contactID)
-        console.log(list)
         $http.delete(url)
         .success(function(){
           delete vm.contact[contactID]

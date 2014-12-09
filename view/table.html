@@ -5,6 +5,7 @@
     <th> Address </th>
     <th> Phone </th>
     <th> Email </th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -13,7 +14,10 @@
       <td>{{list.address}}</td>
       <td>{{list.phone}}</td>
       <td>{{list.email}}</td>
-      <td><button ng-click="doCont.removeTodo(contactID,list)">Remove</button></td>
+      <td>
+        <a class="btn btn-secondary" href="/#/{{contactID}}">Show</a>
+        <a class="btn btn-primary" ng-click="doCont.removeTodo(contactID,list)">Remove</a>
+      </td>
     </tr>
   <tbody>
 </table>
