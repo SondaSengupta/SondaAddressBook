@@ -3,6 +3,7 @@
 *.swo
 *.DS_Store
 *.gdoc
+.sass-cache
 
 # Logs
 logs
