@@ -1,16 +1,18 @@
-[{
+[
+  "Lisa"{
   "person": "Lisa Simpson",
   "address": "Springfield, IL",
   "phone": "123-456-7890",
   "email": "lsimpson@springfield.com"
 },
-{
+
+  "Comic Book Guy"{
   "person": "Comic Book Guy",
   "address": "Comic Books",
   "phone": "123-456-7890",
   "email": "comicbookguy@springfield.com"
 },
-{
+  "Burns"{
   "person": "Mr. Burns",
   "address": "Mansion",
   "phone": "123-456-7890",

@@ -18,8 +18,38 @@
         controller: 'ShowController',
         controllerAs:'show'
       })
+      .when('/:id/edit', {
+        templateUrl: 'view/form.html',
+        controller: 'EditController',
+        controllerAs: 'doCont'
+      })
       .otherwise({redirectTo: '/'});
     })
+
+    .controller('EditController', function($http, $routeParams, $location){
+       var vm = this;
+       var id = $routeParams.id;
+       var url = 'https://sondatodolist.firebaseio.com/' + id + '.json'
+       $http.get(url)
+         .success(function(data){
+           vm.newcontact = data;
+         })
+         .error(function(err){
+           console.log(err);
+         });
+
+        vm.addtoList = function(){
+          $http.put(url, vm.newcontact)
+          .success(function(data){
+            $location.path('/')
+          })
+          .error(function(err){
+            console.log(err)
+          });
+        };
+
+
+     })
 
    .controller('ShowController', function($http, $routeParams){
       var vm = this;
