@@ -69,12 +69,23 @@
         });
       };
 
+      function removeContact(contactID, cb){
+        var url = 'https://sondatodolist.firebaseio.com/'+ contactID + '.json';
+        $http.delete(url)
+        .success(function(){
+          cb();
+        })
+        .error(function(err){
+          console.log(err)
+        });
+      };
+
       return {
         getContact: getContact,
         editContact: editContact,
         getAllContacts: getAllContacts,
-        addContact: addContact
-
+        addContact: addContact,
+        removeContact: removeContact
       };
     })
 
@@ -113,15 +124,9 @@
       };
 
       vm.removeTodo = function(contactID){
-        var url = 'https://sondatodolist.firebaseio.com/'+ contactID + '.json';
-        console.log(contactID)
-        $http.delete(url)
-        .success(function(){
+        contactFactory.removeContact(contactID, function(){
           delete vm.contact[contactID]
         })
-        .error(function(err){
-          console.log(err)
-        });
       };
 
       function _defaultContact(){
@@ -129,7 +134,6 @@
           name: ''
         }
       }
-      {}
 
     });
 }());
