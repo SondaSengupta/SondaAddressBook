@@ -26,43 +26,56 @@
       .otherwise({redirectTo: '/'});
     })
 
-    .controller('EditController', function($http, $routeParams, $location){
-       var vm = this;
-       var id = $routeParams.id;
-       var url = 'https://sondatodolist.firebaseio.com/' + id + '.json'
-       $http.get(url)
-         .success(function(data){
-           vm.newcontact = data;
-         })
-         .error(function(err){
-           console.log(err);
-         });
-
-        vm.addtoList = function(){
-          $http.put(url, vm.newcontact)
+    .factory('contactFactory', function($http, $location){
+      function getContact(id, cb){
+        var url = 'https://sondatodolist.firebaseio.com/' + id + '.json'
+        $http.get(url)
           .success(function(data){
-            $location.path('/')
+            cb(data);
           })
           .error(function(err){
-            console.log(err)
+            console.log(err);
           });
-        };
+      }
 
-
-     })
-
-   .controller('ShowController', function($http, $routeParams){
-      var vm = this;
-      var id = $routeParams.id;
-      $http.get('https://sondatodolist.firebaseio.com/' + id + '.json')
+      function editContact(id, newcontact){
+        var url = 'https://sondatodolist.firebaseio.com/' + id + '.json'
+        $http.put(url, newcontact)
         .success(function(data){
-          vm.contact = data;
+          $location.path('/');
         })
         .error(function(err){
           console.log(err);
         });
+      }
+
+      return {
+        getContact: getContact,
+        editContact: editContact
+
+      };
     })
 
+
+   .controller('ShowController', function($routeParams, contactFactory){
+      var vm = this;
+      var id = $routeParams.id;
+      contactFactory.getContact(id, function(data){
+        vm.contact = data;
+      });
+    })
+
+    .controller('EditController', function($routeParams, contactFactory){
+       var vm = this;
+       var id = $routeParams.id;
+       contactFactory.getContact(id, function(data){
+         vm.newcontact = data;
+       })
+
+        vm.addtoList = function(){
+          contactFactory.editContact(id, vm.newcontact)
+        };
+     })
 
     .controller('ToDoController',function($http){
       var vm = this;
