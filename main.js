@@ -49,9 +49,31 @@
         });
       }
 
+      function getAllContacts(cb){
+        $http.get('https://sondatodolist.firebaseio.com/.json')
+          .success(function(data){
+            cb(data);
+          })
+          .error(function(err){
+            console.log(err)
+          });
+      }
+
+      function addContact(anothercontact, cb){
+        $http.post('https://sondatodolist.firebaseio.com/.json', anothercontact)
+        .success(function(data){
+          cb(data);
+        })
+        .error(function(err){
+          console.log(err)
+        });
+      };
+
       return {
         getContact: getContact,
-        editContact: editContact
+        editContact: editContact,
+        getAllContacts: getAllContacts,
+        addContact: addContact
 
       };
     })
@@ -77,24 +99,16 @@
         };
      })
 
-    .controller('ToDoController',function($http){
+    .controller('ToDoController',function(contactFactory){
       var vm = this;
-      $http.get('https://sondatodolist.firebaseio.com/.json')
-        .success(function(data){
-          vm.contact = data;
-        })
-        .error(function(err){
-          console.log(err)
-        });
+      contactFactory.getAllContacts(function(data){
+        vm.contact = data;
+      })
 
       vm.addtoList = function(){
-        $http.post('https://sondatodolist.firebaseio.com/.json', vm.newcontact)
-        .success(function(data){
+        contactFactory.addContact(vm.newcontact, function(data){
           vm.contact[data.name] = vm.newcontact;
           vm.newcontact = _defaultContact();
-        })
-        .error(function(err){
-          console.log(err)
         });
       };
 
